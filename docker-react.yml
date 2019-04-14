@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: docker-react
   labels: 
-    component: web
+    component: webset
 spec:
   containers:
     - name: client
