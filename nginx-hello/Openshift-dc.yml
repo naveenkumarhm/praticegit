@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DeploymentConfig
+metadata:
+  name: client-deployment-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: client
+  template:
+    metadata:
+      labels:
+        component: client
+    spec:
+      containers:
+        - name: client
+          image: naveenhm/nginx10
+          ports:
+            - containerPort: 8081

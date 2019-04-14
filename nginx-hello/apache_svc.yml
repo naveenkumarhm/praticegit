@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: apache
+ lables:
+   app: apacheservice
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 32568
+  selector:
+    app: proxy

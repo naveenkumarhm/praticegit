@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      component: nginx1
+  template:
+    metadata:
+      labels:
+        component: nginx1
+    spec:
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: database-volume-claim
+      containers:
+        - name: nginx1-pod
+          image: naveenhm/nginx 
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/share/html
+              subPath: opt
